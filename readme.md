@@ -12,8 +12,8 @@
 
 ## 3. Order and Cart Service
 
-- [ ] Adding/removing items to/from the cart.
-- [ ] Order placement and tracking.
+- [x] Adding/removing items to/from the cart.
+- [x] Order placement and tracking.
 
 ## 4. Review and Rating Service
 
@@ -28,7 +28,7 @@
 2. [x] Data Persistence and Caching
 3. [x] Service Discovery Integration
 4. [x] API Gateway Setup
-5. [ ] Inter-Service Communication
+5. [x] Inter-Service Communication
 6. [x] Containerize Microservices
 
 ## For volunteers

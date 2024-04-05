@@ -22,14 +22,3 @@ Content-Type: application/json
 }
 
 ###
-
-### Login with Wrong Password
-POST {{url}}/login
-Content-Type: application/json
-
-{
-  "email": "testuser@example.com",
-  "password": "wrongpassword"
-}
-
-###
