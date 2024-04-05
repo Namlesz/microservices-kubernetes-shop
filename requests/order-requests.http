@@ -1,0 +1,48 @@
+#@url = http://localhost:8080/api/orders
+@url = http://localhost:5266
+@token = enterToken
+@productCode = 000001
+
+### Add product to cart
+POST {{url}}/cart/{{productCode}}?quantity={{$random.integer(1, 10)}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+### Remove product from cart
+DELETE {{url}}/cart/{{productCode}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+### Place order
+POST {{url}}/cart/submit
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+### Cancel order
+POST {{url}}/cart/cancel
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+@cartId = 660f0ca3b5368c4f5595673a
+
+### Get cart
+GET {{url}}/cart/{{cartId}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+### Get all carts
+GET {{url}}/cart
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###

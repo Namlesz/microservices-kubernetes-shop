@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: microservices-config
+  namespace: microservices
+data:
+  appsettings.Production.json: |
+    {
+      "MongoSettings": {
+        "ConnectionString": "mongodb+srv://microservices-api:RDRroZi2bdTdWcni@safemeddatabase.6ymxr56.mongodb.net/?retryWrites=true&w=majority",
+        "Database": "MicroservicesApp"
+      },
+      "JwtTokenSettings": {
+        "Issuer": "https://user-api:8084",
+        "Key": "hLHuFXyMh#AY6PwHgb7K&jhuaP2hvN@MKjgMzaSuYH5VD@t%hx8@iKDTDDW%UV3D"
+      }
+    }

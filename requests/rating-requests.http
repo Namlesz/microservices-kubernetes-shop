@@ -1,0 +1,30 @@
+#@url = http://localhost:8080/api/products
+@url = http://localhost:5212
+@token = enterToken
+
+@productCode = 000006
+
+### Add review
+POST {{url}}/{{productCode}}/review
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "Rating": "{{$random.integer(1,5)}}",
+  "Comment": "{{$random.alphabetic(20)}}"
+}
+
+###
+
+### Remove review
+DELETE {{url}}/{{productCode}}/review
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+
+### Get reviews
+GET {{url}}/{{productCode}}/review
+Content-Type: application/json
+
+###

@@ -1,0 +1,22 @@
+---
+apiVersion: "aspnetcore.ui/v1"
+kind: HealthCheck
+metadata:
+  name: healthchecks-ui
+  namespace: microservices
+spec:
+  name: healthchecks-ui
+  scope: Namespaced
+  servicesLabel: HealthChecks
+  serviceType: LoadBalancer
+  portNumber: 8000
+  stylesheetContent: >
+    :root {
+      --primaryColor: #2a3950;
+      --secondaryColor: #f4f4f4;
+      --bgMenuActive: #e1b015;
+      --bgButton: #e1b015;
+      --logoImageUrl: url('https://upload.wikimedia.org/wikipedia/commons/7/7d/Microsoft_.NET_logo.svg');
+      --bgAside: var(--primaryColor);
+    }
+  healthChecksPath: "/healthz"

@@ -1,0 +1,35 @@
+#@url = http://localhost:8080/api/users
+@url = http://localhost:5070
+
+### Register User
+POST {{url}}/register
+Content-Type: application/json
+
+{
+  "email": "testuser@example.com",
+  "password": "securepassword123"
+}
+
+###
+
+### Login User
+POST {{url}}/login
+Content-Type: application/json
+
+{
+  "email": "testuser@example.com",
+  "password": "securepassword123"
+}
+
+###
+
+### Login with Wrong Password
+POST {{url}}/login
+Content-Type: application/json
+
+{
+  "email": "testuser@example.com",
+  "password": "wrongpassword"
+}
+
+###

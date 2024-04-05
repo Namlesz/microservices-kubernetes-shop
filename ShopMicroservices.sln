@@ -1,0 +1,111 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6F49A470-1818-4747-9751-E44978C96B87}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "requests", "requests", "{A7478199-E290-4079-8B01-00D04A77AE5F}"
+	ProjectSection(SolutionItems) = preProject
+		requests\user-requests.http = requests\user-requests.http
+		requests\product-requests.http = requests\product-requests.http
+		requests\rating-requests.http = requests\rating-requests.http
+		requests\order-requests.http = requests\order-requests.http
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "kubernetes", "kubernetes", "{37BD47C2-483D-4CFC-A33D-965C8065131C}"
+	ProjectSection(SolutionItems) = preProject
+		kubernetes\delete_stopped_replicasets.sh = kubernetes\delete_stopped_replicasets.sh
+		kubernetes\health-checks.yaml = kubernetes\health-checks.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api-gateway", "api-gateway", "{8E077CB2-B6FD-48A2-90C2-D5AB164CF87D}"
+	ProjectSection(SolutionItems) = preProject
+		kubernetes\api-gateway-deployment.yaml = kubernetes\api-gateway-deployment.yaml
+		kubernetes\api-gateway-service.yaml = kubernetes\api-gateway-service.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api-orders", "api-orders", "{13ADC22C-F440-46C8-A4BF-840C17C72996}"
+	ProjectSection(SolutionItems) = preProject
+		kubernetes\order-api-deployment.yaml = kubernetes\order-api-deployment.yaml
+		kubernetes\order-api-service.yaml = kubernetes\order-api-service.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api-users", "api-users", "{B7F141DB-F8E6-4852-9A2D-9F3027A12955}"
+	ProjectSection(SolutionItems) = preProject
+		kubernetes\user-api-deployment.yaml = kubernetes\user-api-deployment.yaml
+		kubernetes\user-api-service.yaml = kubernetes\user-api-service.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api-ratings", "api-ratings", "{F69E558C-1062-47C0-81E0-AAC546886A2A}"
+	ProjectSection(SolutionItems) = preProject
+		kubernetes\rating-api-deployment.yaml = kubernetes\rating-api-deployment.yaml
+		kubernetes\rating-api-service.yaml = kubernetes\rating-api-service.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api-products", "api-products", "{9F4E066D-1DEC-4E1C-A4C1-F985312C066F}"
+	ProjectSection(SolutionItems) = preProject
+		kubernetes\product-api-deployment.yaml = kubernetes\product-api-deployment.yaml
+		kubernetes\product-api-service.yaml = kubernetes\product-api-service.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{771AA58B-54A3-4EA1-AAA4-496ACBBEC63C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Gateway", "src\Api.Gateway\Api.Gateway.csproj", "{1A3F0E6B-FDC8-4244-936D-0C7F8FE708F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Order.Api", "src\Order.Api\Order.Api.csproj", "{6D9AFBA1-8711-4BB5-99C5-0B52FB1FFDB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product.Api", "src\Product.Api\Product.Api.csproj", "{9E8E842D-DA98-4669-998C-3D4B6E641DB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rating.Api", "src\Rating.Api\Rating.Api.csproj", "{08620B7C-C822-4810-93C0-3F680414A67F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "User.Api", "src\User.Api\User.Api.csproj", "{74FD913B-5879-4B41-B9D9-C80B9A20C470}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config-maps", "config-maps", "{D8F6A5C6-4163-4DF0-A1C3-9DF068C2ED65}"
+	ProjectSection(SolutionItems) = preProject
+		kubernetes\gateway-config.yaml = kubernetes\gateway-config.yaml
+		kubernetes\microservices-config.yaml = kubernetes\microservices-config.yaml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1A3F0E6B-FDC8-4244-936D-0C7F8FE708F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A3F0E6B-FDC8-4244-936D-0C7F8FE708F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A3F0E6B-FDC8-4244-936D-0C7F8FE708F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A3F0E6B-FDC8-4244-936D-0C7F8FE708F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D9AFBA1-8711-4BB5-99C5-0B52FB1FFDB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D9AFBA1-8711-4BB5-99C5-0B52FB1FFDB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D9AFBA1-8711-4BB5-99C5-0B52FB1FFDB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D9AFBA1-8711-4BB5-99C5-0B52FB1FFDB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E8E842D-DA98-4669-998C-3D4B6E641DB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E8E842D-DA98-4669-998C-3D4B6E641DB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E8E842D-DA98-4669-998C-3D4B6E641DB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E8E842D-DA98-4669-998C-3D4B6E641DB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08620B7C-C822-4810-93C0-3F680414A67F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08620B7C-C822-4810-93C0-3F680414A67F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08620B7C-C822-4810-93C0-3F680414A67F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08620B7C-C822-4810-93C0-3F680414A67F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74FD913B-5879-4B41-B9D9-C80B9A20C470}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74FD913B-5879-4B41-B9D9-C80B9A20C470}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74FD913B-5879-4B41-B9D9-C80B9A20C470}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74FD913B-5879-4B41-B9D9-C80B9A20C470}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8E077CB2-B6FD-48A2-90C2-D5AB164CF87D} = {37BD47C2-483D-4CFC-A33D-965C8065131C}
+		{13ADC22C-F440-46C8-A4BF-840C17C72996} = {37BD47C2-483D-4CFC-A33D-965C8065131C}
+		{B7F141DB-F8E6-4852-9A2D-9F3027A12955} = {37BD47C2-483D-4CFC-A33D-965C8065131C}
+		{F69E558C-1062-47C0-81E0-AAC546886A2A} = {37BD47C2-483D-4CFC-A33D-965C8065131C}
+		{9F4E066D-1DEC-4E1C-A4C1-F985312C066F} = {37BD47C2-483D-4CFC-A33D-965C8065131C}
+		{1A3F0E6B-FDC8-4244-936D-0C7F8FE708F2} = {771AA58B-54A3-4EA1-AAA4-496ACBBEC63C}
+		{6D9AFBA1-8711-4BB5-99C5-0B52FB1FFDB2} = {771AA58B-54A3-4EA1-AAA4-496ACBBEC63C}
+		{9E8E842D-DA98-4669-998C-3D4B6E641DB3} = {771AA58B-54A3-4EA1-AAA4-496ACBBEC63C}
+		{08620B7C-C822-4810-93C0-3F680414A67F} = {771AA58B-54A3-4EA1-AAA4-496ACBBEC63C}
+		{74FD913B-5879-4B41-B9D9-C80B9A20C470} = {771AA58B-54A3-4EA1-AAA4-496ACBBEC63C}
+		{D8F6A5C6-4163-4DF0-A1C3-9DF068C2ED65} = {37BD47C2-483D-4CFC-A33D-965C8065131C}
+	EndGlobalSection
+EndGlobal

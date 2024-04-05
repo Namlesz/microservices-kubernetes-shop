@@ -1,0 +1,36 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-api
+  namespace: microservices
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product-api
+  template:
+    metadata:
+      labels:
+        app: product-api
+    spec:
+      containers:
+        - name: product-api
+          image: product.api:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8082
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: "Production"
+            - name: ASPNETCORE_HTTP_PORTS
+              value: "8082"
+          volumeMounts:
+            - name: appsettings-production-volume
+              mountPath: /app/appsettings.Production.json
+              subPath: appsettings.Production.json
+      volumes:
+        - name: appsettings-production-volume
+          configMap:
+            name: microservices-config
+      restartPolicy: Always

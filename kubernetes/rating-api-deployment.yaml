@@ -1,0 +1,36 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rating-api
+  namespace: microservices
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rating-api
+  template:
+    metadata:
+      labels:
+        app: rating-api
+    spec:
+      containers:
+        - name: rating-api
+          image: rating.api:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8083
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: "Production"
+            - name: ASPNETCORE_HTTP_PORTS
+              value: "8083"
+          volumeMounts:
+            - name: appsettings-production-volume
+              mountPath: /app/appsettings.Production.json
+              subPath: appsettings.Production.json
+      volumes:
+        - name: appsettings-production-volume
+          configMap:
+            name: microservices-config
+      restartPolicy: Always

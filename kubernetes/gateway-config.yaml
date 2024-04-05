@@ -1,0 +1,93 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gateway-config
+  namespace: microservices
+data:
+  appsettings.Production.json: |
+    {
+      "ReverseProxy": {
+        "Logging": {
+          "LogLevel": {
+            "ReverseProxy": "Debug"
+          }
+        },
+        "Routes": {
+          "users-route": {
+            "ClusterId": "users-cluster",
+            "Match": {
+              "Path": "/api/users/{**catch-all}"
+            },
+            "Transforms": [
+              {
+                "PathPattern": "{**catch-all}"
+              }
+            ]
+          },
+          "products-route": {
+            "ClusterId": "products-cluster",
+            "Match": {
+              "Path": "/api/products/{**catch-all}"
+            },
+            "Transforms": [
+              {
+                "PathPattern": "{**catch-all}"
+              }
+            ]
+          },
+          "ratings-route": {
+            "ClusterId": "ratings-cluster",
+            "Match": {
+              "Path": "/api/ratings/{**catch-all}"
+            },
+            "Transforms": [
+              {
+                "PathPattern": "{**catch-all}"
+              }
+            ]
+          },
+          "orders-route": {
+            "ClusterId": "orders-cluster",
+            "Match": {
+              "Path": "/api/orders/{**catch-all}"
+            },
+            "Transforms": [
+              {
+                "PathPattern": "{**catch-all}"
+              }
+            ]
+          }
+        },
+        "Clusters": {
+          "orders-cluster": {
+            "Destinations": {
+              "base": {
+                "Address": "http://order-api"
+              }
+            }
+          },
+          "products-cluster": {
+            "Destinations": {
+              "base": {
+                "Address": "http://product-api"
+              }
+            }
+          },
+          "ratings-cluster": {
+            "Destinations": {
+              "base": {
+                "Address": "http://rating-api"
+              }
+            }
+          },
+          "users-cluster": {
+            "Destinations": {
+              "base": {
+                "Address": "http://user-api"
+              }
+            }
+          }
+        }
+      }
+    }

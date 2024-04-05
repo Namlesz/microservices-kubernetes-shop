@@ -1,0 +1,67 @@
+#@url = http://localhost:8080/api/products
+@url = http://localhost:5260
+@token = enterToken
+
+### Add product
+POST {{url}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "Code": "000006",
+  "Name": "{{$random.alphabetic(9)}}",
+  "Price": "{{$random.float(1,100)}}",
+  "Description": "This is a test product",
+  "Category": "Test",
+  "Stock": "{{$random.integer(1,100)}}"
+}
+
+###
+
+### Get products
+GET {{url}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+
+### Update product
+PUT {{url}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "Code": "000005",
+  "Name": "{{$random.alphabetic(9)}}",
+  "Price": "{{$random.float(1,100)}}",
+  "Description": "This is a test product",
+  "Category": "Test",
+  "Stock": "{{$random.integer(1,100)}}"
+}
+
+###
+
+### Delete product
+DELETE {{url}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "Code": "000005"
+}
+
+###
+
+### Search products
+GET {{url}}/search
+Content-Type: application/json
+
+{
+  "MinPrice": 0.01,
+  "MaxPrice": 200.00,
+  "Category": "Test",
+  "Name": null,
+  "MinStock": 1
+}
+
+###
