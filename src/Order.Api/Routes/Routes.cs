@@ -103,6 +103,7 @@ internal static class Routes
     private static async Task<IResult> HandleSubmitCartAsync(
         [FromServices] IOrderCartRepository orderCartRepository,
         [FromServices] INotifyService notifyService,
+        [FromServices] ILogger<Route> logger,
         HttpContext context,
         CancellationToken ct
     )
@@ -121,7 +122,14 @@ internal static class Routes
             return TypedResults.Problem(statusCode: StatusCodes.Status500InternalServerError, detail: "Failed to place order");
         }
 
-        await notifyService.SendMailToUserAsync(userId, "Order placed", "Your order has been placed", ct);
+        try
+        {
+            await notifyService.SendMailToUserAsync(userId, "Order placed", "Your order has been placed", ct);
+        }
+        catch (Exception exception)
+        {
+            logger.LogError(exception, "Failed to send email to user");
+        }
 
         return TypedResults.Ok(cart);
     }
@@ -129,6 +137,7 @@ internal static class Routes
     private static async Task<IResult> HandleCancelCartAsync(
         [FromServices] IOrderCartRepository orderCartRepository,
         [FromServices] INotifyService notifyService,
+        [FromServices] ILogger<Route> logger,
         HttpContext context,
         CancellationToken ct
     )
@@ -147,7 +156,14 @@ internal static class Routes
             return TypedResults.Problem(statusCode: StatusCodes.Status500InternalServerError, detail: "Failed to cancel order");
         }
 
-        await notifyService.SendMailToUserAsync(userId, "Order canceled", "Your order has been canceled", ct);
+        try
+        {
+            await notifyService.SendMailToUserAsync(userId, "Order canceled", "Your order has been canceled", ct);
+        }
+        catch (Exception exception)
+        {
+            logger.LogError(exception, "Failed to send email to user");
+        }
 
         return TypedResults.Ok(cart);
     }
