@@ -1,4 +1,4 @@
-@url = http://localhost:8080/api/products
+@url = http://localhost:8080/api/ratings
 #@url = http://localhost:5212
 @token = enterToken
 
