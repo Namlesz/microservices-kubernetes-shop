@@ -10,7 +10,7 @@ Projekt `microservices-kubernetes-shop` to aplikacja składająca się z serwis�
 - [Baza danych](#baza-danych)
 - [Autoryzacja](#autoryzacja)
 - [Struktura plików](#struktura-plików)
-- [Opis serwisów](#opis-serwisów) #TODO DODAĆ DIAGRAM
+- [Opis serwisów](#opis-serwisów)
   - [Api Gateway](#api-gateway)
   - [Product Api](#product-api)
   - [User Api](#user-api)
@@ -71,6 +71,17 @@ Projekt wykorzystuje autoryzację JWT do uwierzytelniania użytkowników. Aby uz
 ## Opis serwisów
 
 Projekt składa się z kilku serwisów, z których każdy odpowiada za określone zadanie. Poniżej znajduje się lista serwisów wraz z opisem ich funkcjonalności.
+
+```mermaid
+graph TD
+    A[Api Gateway] -->|żądanie| B[Product Api]
+    A -->|żądanie| C[User Api]
+    A -->|żądanie| D[Order Api]
+    A -->|żądanie| E[Rating Api]
+    B -->|Zarządzanie produktami| F[Baza]
+    D -->|Zarządzanie zamówieniami| H[Baza]
+    E -->|Zarządzanie ocenami| I[Baza]
+```
 
 ### Api Gateway
 
@@ -144,13 +155,73 @@ Endpointy serwisu ocen:
 
 ## Kubernetes
 
+Projekt wykorzystuje platformę Kubernetes do zarządzania kontenerami Docker. W folderze `kubernetes` znajdują się pliki konfiguracyjne Kubernetes, które definiują zasoby klastra Kubernetes, takie jak:
+
+- Deployment
+- Service
+- Load Balancer
+- ConfigMap
+
 ### Deployments
+
+Do udostępnienia mikroserwisów w klastrze Kubernetes wykorzystano obiekty `Deployment`. Każdy serwis mikroserwisu jest uruchamiany jako oddzielny `Deployment` z określoną liczbą replik.
+
+Obiekty `Deployment` zawierają również informacje o konfiguracji mikroserwisu .NET, np. port, zmienne środowiskowe, obrazy kontenerów Docker.
 
 ### Services
 
+Do udostępnienia mikroserwisów w klastrze Kubernetes wykorzystano obiekty `Service`. Każdy serwis mikroserwisu jest uruchamiany jako oddzielny `Service` z określoną konfiguracją dostępu.
+
+Serwisy Kubernetes umożliwiają komunikację między serwisami w klastrze oraz zewnętrznymi klientami. Każdy serwis ma przypisany unikalny adres IP oraz port, który jest dostępny z poziomu innych serwisów w klastrze. Dzięki temu serwisy mogą komunikować się ze sobą bezpośrednio po nazwie, bez konieczności ujawniania swoich adresów IP.
+
 ### Load Balancer
 
+Do udostępnienia bramki API w klastrze Kubernetes wykorzystano obiekt `LoadBalancer`. Obiekt `LoadBalancer` umożliwia przekierowanie ruchu sieciowego z zewnętrznej sieci na serwis w klastrze Kubernetes.
+
+Obiekt `LoadBalancer` automatycznie tworzy zasób Load Balancer w chmurze, który przekierowuje ruch sieciowy na serwis w klastrze Kubernetes. Dzięki temu serwis jest dostępny z zewnętrznej sieci pod stałym adresem IP. W przypadku lokalnego uruchomienia będzie to adres `localhost`.
+
 ### ConfigMaps
+
+Do przechowywania konfiguracji mikroserwisów w klastrze Kubernetes wykorzystano obiekty `ConfigMap`. Obiekty `ConfigMap` umożliwiają przechowywanie konfiguracji mikroserwisów w postaci kluczy i wartości.
+
+Konfiguracja mikroserwisów jest przechowywana w pliku `microservices-config.yml` w folderze `kubernetes`. Plik ten zawiera konfigurację dostępu do bazy danych oraz klucze JWT.
+
+Przykład wykorzystania w obiekcie `deployment`:
+
+```yaml
+    spec:
+      containers:
+          volumeMounts:
+            - name: appsettings-production-volume
+              mountPath: /app/appsettings.Production.json
+              subPath: appsettings.Production.json
+      volumes:
+        - name: appsettings-production-volume
+          configMap:
+            name: microservices-config
+```
+
+Konfiguracja bramki API jest przechowywana w pliku `gateway-config.yml` w folderze `kubernetes`. Plik ten zawiera konfigurację Reverse Proxy, która przekierowuje żądania do odpowiednich serwisów mikroserwisów.
+
+Przykład wykorzystania w obiekcie `deployment`:
+
+```yaml
+    spec:
+      containers:
+          volumeMounts:
+            - name: appsettings-production-gateway-volume
+              mountPath: /app/appsettings.Production.json
+              subPath: appsettings.Production.json
+      volumes:
+        - name: appsettings-production-gateway-volume
+          configMap:
+            name: gateway-config
+
+```
+
+ConfigMapy są przekazywana do mikroserwisów jako zmienne środowiskowe.
+
+Dzięki obiektom `ConfigMap` konfiguracja mikroserwisów jest zcentralizowana i łatwo zarządzalna.
 
 ## Docker
 
