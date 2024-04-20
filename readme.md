@@ -17,12 +17,12 @@ Projekt `microservices-kubernetes-shop` to aplikacja składająca się z serwis�
   - [Order Api](#order-api)
   - [Rating Api](#rating-api)
 - [Kubernetes](#kubernetes)
-  - [Deployments](#deployments) #TODO
-  - [Services](#services) #TODO
-  - [Load Balancer](#load-balancer) #TODO
-  - [ConfigMaps](#configmaps) #TODO
-- [Docker](#docker) #TODO
-- [Health checks](#health-checks) #TODO
+  - [Deployments](#deployments)
+  - [Services](#services)
+  - [Load Balancer](#load-balancer)
+  - [ConfigMaps](#configmaps)
+- [Docker](#docker)
+- [Health checks](#health-checks)
 - [Zaimplementowane funkcjonalności](#zaimplementowane-funkcjonalności)
 
 ## Wykorzystane technologie
@@ -225,7 +225,28 @@ Dzięki obiektom `ConfigMap` konfiguracja mikroserwisów jest zcentralizowana i 
 
 ## Docker
 
+Do konteneryzacji serwisów mikroserwisów wykorzystano technologię Docker. Każdy serwis ma zdefiniowany plik `Dockerfile`, który zawiera instrukcje do zbudowania obrazu kontenera Docker.
+
 ## Health checks
+
+Do sprawdzania stanu serwisów mikroserwisów wykorzystano mechanizm health checks. Health checks umożliwiają sprawdzenie, czy serwis jest dostępny i działa poprawnie.
+
+Health checks są realizowane za pomocą endpointu `/healthz` w każdym serwisie mikroserwisu. Endpoint `/healthz` zwraca status HTTP 200 OK, jeśli serwis jest dostępny.
+
+Dodatkowo dodany został dashboard HealthChecks UI, który umożliwia monitorowanie stanu serwisów mikroserwisów w czasie rzeczywistym. Został wykorzystany do tego pakiet `AspNetCore.HealthChecks.UI` oraz jego operator dla środowiska Kubernetes.
+[Link do dokumentacji](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/blob/master/doc/k8s-operator.md).
+
+Został on bezpośrednio udostępniony jako zasób w klastrze Kubernetes. Jego definicja znajduje się w pliku `kubernetes/health-checks.yml`.
+
+Aby uzyskać dostęp do dashboardu, należy wykonać zapytanie HTTP na adres `http://localhost:8000/healthchecks`.
+
+Mikroserwisy są automatycznie wyszukiwane przez operatora HealthChecks UI i dodawane do listy serwisów jeśli posiadają odpowiedni label w obiekcie `service`.
+
+```yaml
+metadata:
+  labels:
+    HealthChecks: enabled
+```
 
 ## Zaimplementowane funkcjonalności
 
