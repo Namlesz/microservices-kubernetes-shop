@@ -6,17 +6,24 @@ Projekt `microservices-kubernetes-shop` to aplikacja składająca się z serwis�
 
 ## Spis treści
 
-- [Zaimplementowane funkcjonalności](#zaimplementowane-funkcjonalności)
 - [Wykorzystane technologie](#wykorzystane-technologie)
 - [Baza danych](#baza-danych)
 - [Autoryzacja](#autoryzacja)
 - [Struktura plików](#struktura-plików)
-- [Opis serwisów](#opis-serwisów)
+- [Opis serwisów](#opis-serwisów) #TODO DODAĆ DIAGRAM
   - [Api Gateway](#api-gateway)
   - [Product Api](#product-api)
   - [User Api](#user-api)
   - [Order Api](#order-api)
   - [Rating Api](#rating-api)
+- [Kubernetes](#kubernetes)
+  - [Deployments](#deployments) #TODO
+  - [Services](#services) #TODO
+  - [Load Balancer](#load-balancer) #TODO
+  - [ConfigMaps](#configmaps) #TODO
+- [Docker](#docker) #TODO
+- [Health checks](#health-checks) #TODO
+- [Zaimplementowane funkcjonalności](#zaimplementowane-funkcjonalności)
 
 ## Wykorzystane technologie
 
@@ -134,6 +141,20 @@ Endpointy serwisu ocen:
 - `POST /{productCode}/review` - dodaje nową ocenę produktu
 - `DELETE /{productCode}/review` - usuwa ocenę produktu
 - `GET /{productCode}/review` - zwraca listę wszystkich ocen produktu
+
+## Kubernetes
+
+### Deployments
+
+### Services
+
+### Load Balancer
+
+### ConfigMaps
+
+## Docker
+
+## Health checks
 
 ## Zaimplementowane funkcjonalności
 
