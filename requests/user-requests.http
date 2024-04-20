@@ -1,5 +1,5 @@
-#@url = http://localhost:8080/api/users
-@url = http://localhost:5070
+@url = http://localhost:8080/api/users
+#@url = http://localhost:5070
 
 ### Register User
 POST {{url}}/register
@@ -17,7 +17,7 @@ POST {{url}}/login
 Content-Type: application/json
 
 {
-  "email": "testuser@example.com",
+  "email": "nejmlesz@gmail.com",
   "password": "securepassword123"
 }
 

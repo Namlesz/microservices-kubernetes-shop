@@ -1,8 +1,8 @@
-#@url = http://localhost:8080/api/products
-@url = http://localhost:5212
+@url = http://localhost:8080/api/products
+#@url = http://localhost:5212
 @token = enterToken
 
-@productCode = 000006
+@productCode = 000007
 
 ### Add review
 POST {{url}}/{{productCode}}/review

@@ -1,5 +1,5 @@
-#@url = http://localhost:8080/api/products
-@url = http://localhost:5260
+@url = http://localhost:8080/api/products
+#@url = http://localhost:5260
 @token = enterToken
 
 ### Add product
@@ -8,7 +8,7 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "Code": "000006",
+  "Code": "000007",
   "Name": "{{$random.alphabetic(9)}}",
   "Price": "{{$random.float(1,100)}}",
   "Description": "This is a test product",
