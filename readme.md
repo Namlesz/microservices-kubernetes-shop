@@ -35,7 +35,7 @@ Projekt `microservices-kubernetes-shop` to aplikacja składająca się z serwis�
 
 ## Baza danych
 
-Projekt wykorzystuje bazę danych MongoDB do przechowywania danych. Baza danych jest hostowana w chmurze na platformie MongoDB Atlas. W celu połączenia się z bazą danych, należy skonfigurować odpowiednie parametry połączenia w pliku `appsettings.json` każdego serwisu.
+Projekt wykorzystuje bazę danych MongoDB do przechowywania danych. Baza danych jest hostowana w chmurze na platformie MongoDB Atlas. W celu połączenia się z bazą danych, należy skonfigurować odpowiednie parametry połączenia w pliku `appsettings.json` każdego serwisu lub w przypadku kubernetes w pliku `microservices-config.yaml`.
 
 ```json
 {
@@ -238,9 +238,9 @@ Dodatkowo dodany został dashboard HealthChecks UI, który umożliwia monitorowa
 
 Został on bezpośrednio udostępniony jako zasób w klastrze Kubernetes. Jego definicja znajduje się w pliku `kubernetes/health-checks.yml`.
 
-Aby uzyskać dostęp do dashboardu, należy wykonać zapytanie HTTP na adres `http://localhost:8000/healthchecks`.
+Aby uzyskać dostęp do dashboardu, należy przejść na adres `http://localhost:8000/healthchecks`.
 
-Mikroserwisy są automatycznie wyszukiwane przez operatora HealthChecks UI i dodawane do listy serwisów jeśli posiadają odpowiedni label w obiekcie `service`.
+Mikroserwisy są automatycznie wyszukiwane przez operatora HealthChecks UI i dodawane do listy serwisów jeśli posiadają odpowiedni atrybut label w obiekcie `service`.
 
 ```yaml
 metadata:
