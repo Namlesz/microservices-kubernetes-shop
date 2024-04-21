@@ -259,7 +259,7 @@ metadata:
 7. [x] Centralizowana konfiguracja
 8. [x] Uwierzytelnianie i autoryzacja
 9. [x] Odporność i tolerancja na błędy
-10. [ ] Śledzenie rozproszone
+10. [x] Śledzenie rozproszone
 11. [x] Architektura sterowania zdarzeniami
 12. [x] Bilansowanie obciążenia
 13. [ ] Testowanie mikroserwisów
